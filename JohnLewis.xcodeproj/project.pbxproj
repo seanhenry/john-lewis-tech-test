@@ -10,7 +10,6 @@
 		00C5A1990CD74B29B6EB538F /* Pods_JohnLewisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA29AE6121274E2AD283443 /* Pods_JohnLewisTests.framework */; };
 		143411DA1E1E510900C5A34C /* JLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143411D81E1E510900C5A34C /* JLRequest.swift */; };
 		143411DB1E1E510900C5A34C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143411D91E1E510900C5A34C /* Request.swift */; };
-		146E98D61E1E4B080047ABFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146E98D51E1E4B080047ABFA /* ViewController.swift */; };
 		35CDF0EEC6B7B79F3D3B3DC0 /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF1A7A71F37C7D0EFD336 /* ResultTests.swift */; };
 		35CDF2A08937CC15F0461AEA /* NetworkProductListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF3E8F58C3F2FB93034EA /* NetworkProductListFetcher.swift */; };
 		35CDF32B3A79A38117E73DA3 /* NetworkProductListFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF8A68B76B75F85E28CEB /* NetworkProductListFetcherTests.swift */; };
@@ -21,8 +20,6 @@
 		35CDF91CD538B9199A1824ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35CDF8302F3BE7081111C3F0 /* Assets.xcassets */; };
 		35CDFA4AF8B048B1012C7040 /* MockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDFC7797444A5B213F6CBD /* MockRequest.swift */; };
 		35CDFAF2BF7F257455568C3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35CDF364D346846704F7FE83 /* Main.storyboard */; };
-		35CDFB2F5975A646A80322E5 /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = 35CDFD4E7D6185F5E4A5EEAA /* NetworkProductListFetcherTests.swift */; };
-		35CDFB78551DD87EDCE729C9 /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = 35CDFA918E0F655F971BFB22 /* NetworkProductListFetcher.swift */; };
 		35CDFBA399C019A7A04EE600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35CDF0006BBBC70BBA140445 /* LaunchScreen.storyboard */; };
 		35CDFD58714DCBD41B44336E /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF2AD5D470F674D0F45AD /* TestHelpers.swift */; };
 		35CDFD63BE49FA9085269216 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDFCD423B2CD589670480D /* Result.swift */; };
@@ -44,7 +41,6 @@
 		143411D81E1E510900C5A34C /* JLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLRequest.swift; sourceTree = "<group>"; };
 		143411D91E1E510900C5A34C /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		146E98D01E1E4B080047ABFA /* JohnLewis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JohnLewis.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		146E98D51E1E4B080047ABFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		146E98E41E1E4B080047ABFA /* JohnLewisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JohnLewisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CDF0D8206175D5E7AFDD6E /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		35CDF1A7A71F37C7D0EFD336 /* ResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
@@ -58,10 +54,8 @@
 		35CDF8A68B76B75F85E28CEB /* NetworkProductListFetcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProductListFetcherTests.swift; sourceTree = "<group>"; };
 		35CDFA1BF31BAF06B15667C4 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		35CDFA86B6754B02FA424186 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
-		35CDFA918E0F655F971BFB22 /* NetworkProductListFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProductListFetcher.swift; sourceTree = "<group>"; };
 		35CDFC7797444A5B213F6CBD /* MockRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockRequest.swift; sourceTree = "<group>"; };
 		35CDFCD423B2CD589670480D /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		35CDFD4E7D6185F5E4A5EEAA /* NetworkProductListFetcherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProductListFetcherTests.swift; sourceTree = "<group>"; };
 		35CDFEF70E992531E349E31F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		590B04D2C995D2E96B6C0DBD /* Pods-JohnLewisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JohnLewisTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JohnLewisTests/Pods-JohnLewisTests.release.xcconfig"; sourceTree = "<group>"; };
 		8AA29AE6121274E2AD283443 /* Pods_JohnLewisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JohnLewisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,7 +107,6 @@
 		146E98D21E1E4B080047ABFA /* JohnLewis */ = {
 			isa = PBXGroup;
 			children = (
-				146E98D51E1E4B080047ABFA /* ViewController.swift */,
 				35CDFBC5835041C3B9939CC5 /* Main */,
 				35CDF3020DB134E2EF2961B4 /* Resources */,
 				35CDFED19E1AE88A5C6D4809 /* Product List */,
@@ -468,7 +461,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				146E98D61E1E4B080047ABFA /* ViewController.swift in Sources */,
 				143411DB1E1E510900C5A34C /* Request.swift in Sources */,
 				35CDF5D2B84D876AB8FFEBEE /* AppDelegate.swift in Sources */,
 				35CDF5FE8AA0536A8E6F6612 /* main.swift in Sources */,
