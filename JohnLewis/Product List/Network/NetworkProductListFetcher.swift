@@ -13,8 +13,8 @@ class NetworkProductListFetcher: ProductListFetcher {
         self.request = request
     }
 
-        request.get(from: "/products/search?pageSize=20") { [weak self] result in
     func fetch(completion: @escaping (ProductListFetcherResult) -> ()) {
+        request.get(from: "/products/search?q=dishwasher&pageSize=20") { [weak self] result in
             self?.handleResponse(result: result, completion: completion)
         }
     }

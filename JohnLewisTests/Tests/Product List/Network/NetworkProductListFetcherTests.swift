@@ -17,7 +17,7 @@ class NetworkProductListFetcherTests: XCTestCase {
 
     func test_fetch_shouldMakeNetworkRequest() {
         fetchSynchronously()
-        XCTAssertEqual(mockedRequest.invokedPath, "/products/search?pageSize=20")
+        XCTAssertEqual(mockedRequest.invokedPath, "/products/search?q=dishwasher&pageSize=20")
     }
 
     func test_fetch_shouldPassError_whenNetworkError() {
