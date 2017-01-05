@@ -133,8 +133,8 @@ class NetworkProductListFetcherTests: XCTestCase {
     }
 
     @discardableResult
-    func fetchSynchronously() -> NetworkProductListFetcher.FetchResult {
-        var result: NetworkProductListFetcher.FetchResult!
+    func fetchSynchronously() -> ProductListFetcherResult {
+        var result: ProductListFetcherResult!
         fetcher.fetch { r in
             result = r
         }

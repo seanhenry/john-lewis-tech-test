@@ -1,26 +1,25 @@
 import Foundation
 import SwiftyJSON
 
-class NetworkProductListFetcher {
+class NetworkProductListFetcher: ProductListFetcher {
 
     enum Error: Swift.Error {
         case couldNotParseResponse
     }
 
-    typealias FetchResult = Result<[Product], Swift.Error>
     private let request: Request
 
     init(request: Request) {
         self.request = request
     }
 
-    func fetch(completion: @escaping (FetchResult) -> ()) {
         request.get(from: "/products/search?pageSize=20") { [weak self] result in
+    func fetch(completion: @escaping (ProductListFetcherResult) -> ()) {
             self?.handleResponse(result: result, completion: completion)
         }
     }
 
-    private func handleResponse(result: Request.RequestResult, completion: (FetchResult) -> ()) {
+    private func handleResponse(result: Request.RequestResult, completion: (ProductListFetcherResult) -> ()) {
         switch result {
         case .failure(let error):
             completion(.failure(error))
@@ -29,7 +28,7 @@ class NetworkProductListFetcher {
         }
     }
 
-    private func parse(_ response: Data) -> FetchResult {
+    private func parse(_ response: Data) -> ProductListFetcherResult {
         guard let products = JSON(data: response)["products"].array else {
             return .failure(Error.couldNotParseResponse)
         }

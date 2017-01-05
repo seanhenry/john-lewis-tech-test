@@ -1,0 +1,3 @@
+protocol ProductListEventHandler {
+    func fetchProducts()
+}
