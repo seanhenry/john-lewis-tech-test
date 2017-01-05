@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vo9-So-OMG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="P0m-kL-kyd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Product List Collection View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="plm-ee-Nwz">
+            <objects>
+                <navigationController id="P0m-kL-kyd" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7QJ-u7-Mgt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vo9-So-OMG" kind="relationship" relationship="rootViewController" id="iPQ-5E-nDw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ESu-hB-GNz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-676" y="160"/>
+        </scene>
+        <!--Dishwashers-->
         <scene sceneID="CK8-6R-tAS">
             <objects>
                 <collectionViewController id="vo9-So-OMG" customClass="ProductListCollectionViewController" customModule="JohnLewis" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,38 +34,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B3A-vL-CHb">
-                            <size key="itemSize" width="200" height="260"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="B3A-vL-CHb">
+                            <size key="itemSize" width="256" height="340"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productCell" id="xbS-yb-ffU" customClass="ProductCell" customModule="JohnLewis" customModuleProvider="target">
-                                <rect key="frame" x="88" y="0.0" width="200" height="260"/>
+                                <rect key="frame" x="60" y="0.0" width="256" height="340"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="260"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="256" height="340"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="NEQ-A0-wgp">
-                                            <rect key="frame" x="-115" y="-39" width="280" height="168"/>
+                                            <rect key="frame" x="30" y="30" width="196" height="245"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7bm-Py-u1A" userLabel="Image">
-                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="196" height="196"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="7bm-Py-u1A" secondAttribute="height" multiplier="1:1" id="FPF-fe-iqR"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Freestanding Dishwasher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACQ-Ie-pEP" userLabel="Title">
-                                                    <rect key="frame" x="0.0" y="204" width="200" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Freestanding Dishwasher" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACQ-Ie-pEP" userLabel="Title">
+                                                    <rect key="frame" x="0.0" y="200" width="196" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£499.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WR0-MS-N8R" userLabel="Price">
-                                                    <rect key="frame" x="0.0" y="229" width="200" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="0.0" y="224.5" width="196" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -58,9 +74,9 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="NEQ-A0-wgp" secondAttribute="trailing" id="1tz-a7-CWl"/>
-                                    <constraint firstItem="NEQ-A0-wgp" firstAttribute="leading" secondItem="xbS-yb-ffU" secondAttribute="leading" id="qzP-zh-lSJ"/>
-                                    <constraint firstItem="NEQ-A0-wgp" firstAttribute="top" secondItem="xbS-yb-ffU" secondAttribute="top" id="x7S-QC-XlJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="NEQ-A0-wgp" secondAttribute="trailing" constant="30" id="1tz-a7-CWl"/>
+                                    <constraint firstItem="NEQ-A0-wgp" firstAttribute="leading" secondItem="xbS-yb-ffU" secondAttribute="leading" constant="30" id="qzP-zh-lSJ"/>
+                                    <constraint firstItem="NEQ-A0-wgp" firstAttribute="top" secondItem="xbS-yb-ffU" secondAttribute="top" constant="30" id="x7S-QC-XlJ"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="7bm-Py-u1A" id="YaD-cN-stu"/>
@@ -74,6 +90,7 @@
                             <outlet property="delegate" destination="vo9-So-OMG" id="wkz-O4-60M"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" title="Dishwashers" id="OCj-rj-TvX"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vre-ID-HFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,6 +1,6 @@
 import UIKit
 
-class ProductListCollectionViewController: UICollectionViewController, ProductListView {
+class ProductListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ProductListView {
 
     var eventHandler: ProductListEventHandler!
     private var products = [Product]()
@@ -26,6 +26,20 @@ class ProductListCollectionViewController: UICollectionViewController, ProductLi
 
     func showImage(image: UIImage, at index: Int) {
         cellForItem(at: index)?.setImage(image)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let columnCount: CGFloat = UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation) ? 3 : 4
+        let aspectRatio: CGFloat = 0.72
+        let width = collectionView.frame.width / columnCount
+        return CGSize(width: width, height: width / aspectRatio)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            self.collectionView?.collectionViewLayout.invalidateLayout()
+        }, completion: nil)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
