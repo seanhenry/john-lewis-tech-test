@@ -41,6 +41,7 @@ class NetworkProductListFetcher: ProductListFetcher {
               let imagePath = json["image"].string else {
             return nil
         }
-        return Product(title: title, price: "£" + price, imagePath: imagePath)
+        let fixedImagePath = URLSchemeFixer.fixMissingScheme(in: imagePath)
+        return Product(title: title, price: "£" + price, imagePath: fixedImagePath)
     }
 }

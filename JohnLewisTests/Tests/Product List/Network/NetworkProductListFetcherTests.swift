@@ -68,14 +68,14 @@ class NetworkProductListFetcherTests: XCTestCase {
                     "price": [
                         "now": "449.00"
                     ],
-                    "image": "//johnlewis.scene7.com/is/image/JohnLewis/234326372?"
+                    "image": "http://johnlewis.scene7.com/is/image/JohnLewis/234326372?"
                 ],
                 [
                     "title": "Freestanding Dishwasher",
                     "price": [
                         "now": "379.00"
                     ],
-                    "image": "//johnlewis.scene7.com/is/image/JohnLewis/234326391?"
+                    "image": "http://johnlewis.scene7.com/is/image/JohnLewis/234326391?"
                 ]
             ]
         ]
@@ -91,19 +91,19 @@ class NetworkProductListFetcherTests: XCTestCase {
                     "price": [
                         "now": "449.00"
                     ],
-                    "image": "//johnlewis.scene7.com/is/image/JohnLewis/234326372?"
+                    "image": "http://johnlewis.scene7.com/is/image/JohnLewis/234326372?"
                 ],
                 // missing title
                 [
                     "price": [
                         "now": "1"
                     ],
-                    "image": "//image"
+                    "image": "http://image"
                 ],
                 // missing price
                 [
                     "title": "Title",
-                    "image": "//image"
+                    "image": "http://image"
                 ],
                 // missing image
                 [
@@ -118,7 +118,7 @@ class NetworkProductListFetcherTests: XCTestCase {
                     "price": [
                         "now": "379.00"
                     ],
-                    "image": "//johnlewis.scene7.com/is/image/JohnLewis/234326391?"
+                    "image": "http://johnlewis.scene7.com/is/image/JohnLewis/234326391?"
                 ]
             ]
         ]
@@ -127,8 +127,8 @@ class NetworkProductListFetcherTests: XCTestCase {
 
     var products: [Product] {
         return [
-            Product(title: "Fully Integrated Dishwasher", price: "£449.00", imagePath: "//johnlewis.scene7.com/is/image/JohnLewis/234326372?"),
-            Product(title: "Freestanding Dishwasher", price: "£379.00", imagePath: "//johnlewis.scene7.com/is/image/JohnLewis/234326391?")
+            Product(title: "Fully Integrated Dishwasher", price: "£449.00", imagePath: "http://johnlewis.scene7.com/is/image/JohnLewis/234326372?"),
+            Product(title: "Freestanding Dishwasher", price: "£379.00", imagePath: "http://johnlewis.scene7.com/is/image/JohnLewis/234326391?")
         ]
     }
 
