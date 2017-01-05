@@ -24,6 +24,10 @@ class ProductListCollectionViewController: UICollectionViewController, ProductLi
         collectionView?.reloadData()
     }
 
+    func showImage(image: UIImage, at index: Int) {
+        cellForItem(at: index)?.setImage(image)
+    }
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count
     }
@@ -32,5 +36,13 @@ class ProductListCollectionViewController: UICollectionViewController, ProductLi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCell
         cell.setProduct(products[indexPath.item])
         return cell
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        eventHandler.fetchImage(at: indexPath.item)
+    }
+
+    private func cellForItem(at index: Int) -> ProductCell? {
+        return collectionView?.cellForItem(at: IndexPath(item: index, section: 0)) as? ProductCell
     }
 }

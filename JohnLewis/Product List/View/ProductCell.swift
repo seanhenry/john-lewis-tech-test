@@ -10,4 +10,8 @@ class ProductCell: UICollectionViewCell {
         titleLabel.text = product.title
         priceLabel.text = product.price
     }
+
+    func setImage(_ image: UIImage) {
+        imageView.image = image
+    }
 }

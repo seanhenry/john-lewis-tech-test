@@ -28,12 +28,14 @@
 		35CDF8D8E1FA7D397C6CC6C8 /* NetworkImageFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDFF224D24D78988D316A8 /* NetworkImageFetcherTests.swift */; };
 		35CDF91CD538B9199A1824ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35CDF8302F3BE7081111C3F0 /* Assets.xcassets */; };
 		35CDF93D949079D699705792 /* MockRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF9E69994BDFDF047B30E /* MockRequestFactory.swift */; };
+		35CDF9C85116A413A4AF1568 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF6ADF1EC2455D3B53F51 /* ImageFetcher.swift */; };
 		35CDF9F5152AA0462FD5008D /* MockProductListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDFAD7DB43320766B42122 /* MockProductListFetcher.swift */; };
 		35CDFACDE02CA0B11B345B69 /* RequestFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF36B24EAADE62119A80E /* RequestFactoryTests.swift */; };
 		35CDFAF2BF7F257455568C3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35CDF364D346846704F7FE83 /* Main.storyboard */; };
 		35CDFB3BF3957CD26C3C2ADC /* ProductListFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDFA264DA80F50CD72B753 /* ProductListFetcher.swift */; };
 		35CDFB8DF05B800AB27E38A6 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF2986EA794A8975D58B4 /* RequestFactory.swift */; };
 		35CDFBA399C019A7A04EE600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35CDF0006BBBC70BBA140445 /* LaunchScreen.storyboard */; };
+		35CDFC4461A08CAD7B8FE249 /* MockImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF088D8080C7911A77365 /* MockImageFetcher.swift */; };
 		35CDFCE377CA8F6CBFC63AA4 /* NetworkImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF09D74E8E69990D785BC /* NetworkImageFetcher.swift */; };
 		35CDFD31B9657CFAEDD836EA /* MockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDFFDF52DB859887E991F7 /* MockRequest.swift */; };
 		35CDFD58714DCBD41B44336E /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CDF2AD5D470F674D0F45AD /* TestHelpers.swift */; };
@@ -56,6 +58,7 @@
 		146E98D01E1E4B080047ABFA /* JohnLewis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JohnLewis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		146E98E41E1E4B080047ABFA /* JohnLewisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JohnLewisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CDF04AE263F840342044E2 /* ProductListViewPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListViewPresenterTests.swift; sourceTree = "<group>"; };
+		35CDF088D8080C7911A77365 /* MockImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockImageFetcher.swift; sourceTree = "<group>"; };
 		35CDF09D74E8E69990D785BC /* NetworkImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageFetcher.swift; sourceTree = "<group>"; };
 		35CDF0D8206175D5E7AFDD6E /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		35CDF163D3D544FF6BA85274 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		35CDF4AACF71BA265B5620CA /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		35CDF61224AA9CB39A1982A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = JohnLewis/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		35CDF62FDF86AF41A42C43B2 /* ProductListEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductListEventHandler.swift; sourceTree = "<group>"; };
+		35CDF6ADF1EC2455D3B53F51 /* ImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		35CDF745D92BBBA9F7EC1677 /* ProductTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTests.swift; sourceTree = "<group>"; };
 		35CDF823C6AF4067F7E1B1C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		35CDF8302F3BE7081111C3F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				35CDFAD7DB43320766B42122 /* MockProductListFetcher.swift */,
+				35CDF088D8080C7911A77365 /* MockImageFetcher.swift */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				35CDFA264DA80F50CD72B753 /* ProductListFetcher.swift */,
+				35CDF6ADF1EC2455D3B53F51 /* ImageFetcher.swift */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
@@ -570,6 +576,7 @@
 				35CDF878BC5F06832930C428 /* Request.swift in Sources */,
 				35CDF66B60BAA8408BF5C0A1 /* JLRequest.swift in Sources */,
 				35CDF3FA826A09D94E8F28B4 /* DefaultRequestFactory.swift in Sources */,
+				35CDF9C85116A413A4AF1568 /* ImageFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +595,7 @@
 				35CDFD31B9657CFAEDD836EA /* MockRequest.swift in Sources */,
 				35CDFACDE02CA0B11B345B69 /* RequestFactoryTests.swift in Sources */,
 				35CDF93D949079D699705792 /* MockRequestFactory.swift in Sources */,
+				35CDFC4461A08CAD7B8FE249 /* MockImageFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

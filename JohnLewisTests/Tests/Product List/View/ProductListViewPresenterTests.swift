@@ -8,12 +8,14 @@ class ProductListViewPresenterTests: XCTestCase {
     var presenter: ProductListViewPresenter!
     var mockedProductListFetcher: MockProductListFetcher!
     var mockedView: MockProductListView!
+    var mockedImageFetcher: MockImageFetcher!
 
     override func setUp() {
         super.setUp()
         mockedProductListFetcher = MockProductListFetcher()
+        mockedImageFetcher = MockImageFetcher()
         mockedView = MockProductListView()
-        presenter = ProductListViewPresenter(productListFetcher: mockedProductListFetcher, view: mockedView)
+        presenter = ProductListViewPresenter(productListFetcher: mockedProductListFetcher, imageFetcher: mockedImageFetcher, view: mockedView)
     }
 
     // MARK: - fetchProducts
@@ -30,9 +32,37 @@ class ProductListViewPresenterTests: XCTestCase {
     }
 
     func test_fetchProducts_shouldShowProducts_whenFetchingSucceeds() {
-        mockedProductListFetcher.stubbedResult = .success(validProducts)
+        stubValidProducts()
         presenter.fetchProducts()
         XCTAssertEqual(mockedView.invokedProducts!, validProducts)
+    }
+
+    // MARK: - fetchImage(at:)
+
+    func test_fetchImage_shouldNotFetchImage_whenOutOfBounds() {
+        stubValidProducts()
+        presenter.fetchProducts()
+        presenter.fetchImage(at: 1)
+        XCTAssertFalse(mockedImageFetcher.didFetch)
+        presenter.fetchImage(at: -1)
+        XCTAssertFalse(mockedImageFetcher.didFetch)
+    }
+
+    func test_fetchImage_shouldFetchImage() {
+        stubValidProducts()
+        presenter.fetchProducts()
+        presenter.fetchImage(at: 0)
+        XCTAssert(mockedImageFetcher.didFetch)
+        XCTAssertEqual(mockedImageFetcher.invokedURL?.absoluteString, validProducts[0].imagePath)
+    }
+
+    func test_fetchImage_shouldShowImageInView_whenImageIsFetched() {
+        stubValidProducts()
+        presenter.fetchProducts()
+        mockedImageFetcher.stubbedResult = .success(testImageData)
+        presenter.fetchImage(at: 0)
+        XCTAssertNotNil(mockedView.invokedImage)
+        XCTAssertEqual(mockedView.invokedImageIndex, 0)
     }
 
     // MARK: - Helpers
@@ -41,6 +71,10 @@ class ProductListViewPresenterTests: XCTestCase {
         return [
             Product(title: "title1", price: "price1", imagePath: "imagePath1")
         ]
+    }
+
+    func stubValidProducts() {
+        mockedProductListFetcher.stubbedResult = .success(validProducts)
     }
 }
 

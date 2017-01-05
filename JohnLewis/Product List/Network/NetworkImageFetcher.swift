@@ -1,8 +1,6 @@
 import Foundation
 
-class NetworkImageFetcher {
-
-    typealias ImageFetcherResult = Result<Data, Error>
+class NetworkImageFetcher: ImageFetcher {
 
     private let requestFactory: RequestFactory
     private var requests = [String: Request]()

@@ -35,8 +35,8 @@ class NetworkImageFetcherTests: XCTestCase {
 
     // MARK: - Helpers
 
-    func fetchSynchronously() -> NetworkImageFetcher.ImageFetcherResult {
-        var result: NetworkImageFetcher.ImageFetcherResult!
+    func fetchSynchronously() -> ImageFetcherResult {
+        var result: ImageFetcherResult!
         fetcher.fetch(from: url) { r in
             result = r
         }
