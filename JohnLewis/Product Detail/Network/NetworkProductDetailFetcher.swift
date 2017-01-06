@@ -22,7 +22,8 @@ class NetworkProductDetailFetcher: Fetcher<ProductDetail>, ProductDetailFetcher 
                   let guarantee = json["additionalServices"]["includedServices"].first?.1.string else {
                 return .failure(DataParserError.couldNotParseResponse)
             }
-            return .success(ProductDetail(title: title, price: "£" + price, imagePath: imagePath, description: description, guarantee: guarantee))
+            let verifiedImagePath = URLSchemeFixer.fixMissingScheme(in: imagePath)
+            return .success(ProductDetail(title: title, price: "£" + price, imagePath: verifiedImagePath, description: description, guarantee: guarantee))
         }
     }
 }

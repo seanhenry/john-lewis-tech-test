@@ -11,7 +11,7 @@ class PushingProductDetailRouter: ProductDetailRouter {
     func showProductDetails(id: String) {
         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailCollectionViewController") as! ProductDetailCollectionViewController
         let detailFetcher = NetworkProductDetailFetcher(request: JLRequest(baseURL: johnLewisBaseURL))
-        let presenter = ProductDetailPresenter(productID: id, productDetailFetcher: detailFetcher, view: viewController)
+        let presenter = ProductDetailPresenter(productID: id, productDetailFetcher: detailFetcher, imageFetcher: NetworkImageFetcher(), view: viewController)
         viewController.eventHandler = presenter
         navigationController?.pushViewController(viewController, animated: true)
     }

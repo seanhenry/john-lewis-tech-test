@@ -1,3 +1,4 @@
+import UIKit
 @testable import JohnLewis
 
 class MockProductDetailView: ProductDetailView {
@@ -10,5 +11,10 @@ class MockProductDetailView: ProductDetailView {
     var invokedProductDetail: ProductDetail?
     func showProductDetail(_ productDetail: ProductDetail) {
         invokedProductDetail = productDetail
+    }
+
+    var invokedImage: UIImage?
+    func showImage(_ image: UIImage) {
+        invokedImage = image
     }
 }

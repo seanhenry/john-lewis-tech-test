@@ -3,6 +3,7 @@ import UIKit
 class ProductDetailCollectionViewController: UICollectionViewController, ProductDetailView {
 
     var productDetail: ProductDetail?
+    var image: UIImage?
     var eventHandler: ProductDetailEventHandler!
     @IBOutlet private var layout: ProductDetailLayout!
 
@@ -17,6 +18,14 @@ class ProductDetailCollectionViewController: UICollectionViewController, Product
         self.productDetail = productDetail
         collectionView?.reloadData()
         title = productDetail.title
+    }
+
+    func showImage(_ image: UIImage) {
+        self.image = image
+        let imageCells = collectionView?.visibleCells.flatMap { cell in
+            return cell as? ImageCell
+        }
+        imageCells?.first?.setImage(image)
     }
 
     override func viewDidLoad() {
@@ -38,19 +47,12 @@ class ProductDetailCollectionViewController: UICollectionViewController, Product
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let productDetail = self.productDetail!
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
-            return cell
+            return setUpImageCell(collectionView: collectionView, at: indexPath)
         } else if indexPath.section == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PurchaseInformationCell", for: indexPath) as! PurchaseInformationCell
-            cell.setPrice(productDetail.price)
-            cell.setGuarantee(productDetail.guarantee)
-            return cell
+            return setUpPurchaseInformationCell(collectionView: collectionView, at: indexPath)
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
-            cell.setText(productDetail.description)
-            return cell
+            return setUpProductDetailCell(collectionView: collectionView, at: indexPath)
         }
     }
 
@@ -64,5 +66,26 @@ class ProductDetailCollectionViewController: UICollectionViewController, Product
     private func updateLayoutOrientation() {
         layout.orientation = UIApplication.shared.statusBarOrientation
         collectionView?.layoutIfNeeded()
+    }
+
+    private func setUpImageCell(collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
+        if let image = image {
+            cell.setImage(image)
+        }
+        return cell
+    }
+
+    private func setUpPurchaseInformationCell(collectionView: UICollectionView, at indexPath: IndexPath) -> PurchaseInformationCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PurchaseInformationCell", for: indexPath) as! PurchaseInformationCell
+        cell.setPrice(productDetail!.price)
+        cell.setGuarantee(productDetail!.guarantee)
+        return cell
+    }
+
+    private func setUpProductDetailCell(collectionView: UICollectionView, at indexPath: IndexPath) -> DetailsCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailsCell", for: indexPath) as! DetailsCell
+        cell.setText(productDetail!.description)
+        return cell
     }
 }
