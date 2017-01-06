@@ -83,6 +83,7 @@ class NetworkProductListFetcher_ParserTests: XCTestCase {
         let dictionary = [
             "products": [
                 [
+                    "productId": "1",
                     "title": "Fully Integrated Dishwasher",
                     "price": [
                         "now": "449.00"
@@ -90,6 +91,7 @@ class NetworkProductListFetcher_ParserTests: XCTestCase {
                     "image": "http://johnlewis.scene7.com/is/image/JohnLewis/234326372?"
                 ],
                 [
+                    "productId": "2",
                     "title": "Freestanding Dishwasher",
                     "price": [
                         "now": "379.00"
@@ -106,14 +108,24 @@ class NetworkProductListFetcher_ParserTests: XCTestCase {
             "products": [
                 // valid
                 [
+                    "productId": "1",
                     "title": "Fully Integrated Dishwasher",
                     "price": [
                         "now": "449.00"
                     ],
                     "image": "http://johnlewis.scene7.com/is/image/JohnLewis/234326372?"
                 ],
+                // missing id
+                [
+                    "title": "Title",
+                    "price": [
+                        "now": "1"
+                    ],
+                    "image": "http://image"
+                ],
                 // missing title
                 [
+                    "productId": "1",
                     "price": [
                         "now": "1"
                     ],
@@ -121,11 +133,13 @@ class NetworkProductListFetcher_ParserTests: XCTestCase {
                 ],
                 // missing price
                 [
+                    "productId": "1",
                     "title": "Title",
                     "image": "http://image"
                 ],
                 // missing image
                 [
+                    "productId": "1",
                     "title": "Title",
                     "price": [
                         "now": "1"
@@ -133,6 +147,7 @@ class NetworkProductListFetcher_ParserTests: XCTestCase {
                 ],
                 // valid
                 [
+                    "productId": "2",
                     "title": "Freestanding Dishwasher",
                     "price": [
                         "now": "379.00"
@@ -146,8 +161,8 @@ class NetworkProductListFetcher_ParserTests: XCTestCase {
 
     var products: [Product] {
         return [
-            Product(title: "Fully Integrated Dishwasher", price: "£449.00", imagePath: "http://johnlewis.scene7.com/is/image/JohnLewis/234326372?"),
-            Product(title: "Freestanding Dishwasher", price: "£379.00", imagePath: "http://johnlewis.scene7.com/is/image/JohnLewis/234326391?")
+            Product(id: "1", title: "Fully Integrated Dishwasher", price: "£449.00", imagePath: "http://johnlewis.scene7.com/is/image/JohnLewis/234326372?"),
+            Product(id: "2", title: "Freestanding Dishwasher", price: "£379.00", imagePath: "http://johnlewis.scene7.com/is/image/JohnLewis/234326391?")
         ]
     }
 }

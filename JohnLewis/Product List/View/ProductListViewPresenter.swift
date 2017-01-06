@@ -7,11 +7,13 @@ class ProductListViewPresenter: ProductListEventHandler {
     private let imageFetcher: ImageFetcher
     private weak var view: ProductListView?
     private var products: [Product]?
+    private let router: ProductDetailRouter
 
-    init(productListFetcher: ProductListFetcher, imageFetcher: ImageFetcher, view: ProductListView) {
+    init(productListFetcher: ProductListFetcher, imageFetcher: ImageFetcher, view: ProductListView, router: ProductDetailRouter) {
         self.productListFetcher = productListFetcher
         self.imageFetcher = imageFetcher
         self.view = view
+        self.router = router
     }
 
     func fetchProducts() {
@@ -26,6 +28,11 @@ class ProductListViewPresenter: ProductListEventHandler {
         imageFetcher.fetch(from: imageURL) { [weak self] result in
             self?.handleFetchedImage(result, at: index)
         }
+    }
+
+    func showDetails(at index: Int) {
+        guard let products = products, isIndexValid(index, in: products) else { return }
+        router.showProductDetails(id: products[index].id)
     }
 
     private func handleFetchedProducts(_ result: ProductListFetcherResult) {

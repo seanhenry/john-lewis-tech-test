@@ -8,11 +8,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! UINavigationController
         let productListViewController = navigationController.viewControllers[0] as! ProductListCollectionViewController
-        let request = JLRequest(baseURL: URL(string: "https://api.johnlewis.com/v1")!)
+        let request = JLRequest(baseURL: johnLewisBaseURL)
         let presenter = ProductListViewPresenter(
             productListFetcher: NetworkProductListFetcher(request: request),
             imageFetcher: NetworkImageFetcher(),
-            view: productListViewController
+            view: productListViewController,
+            router: PushingProductDetailRouter(navigationController: navigationController)
         )
         productListViewController.eventHandler = presenter
         window.rootViewController = navigationController

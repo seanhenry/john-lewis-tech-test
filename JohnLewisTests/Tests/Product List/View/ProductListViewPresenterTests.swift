@@ -9,13 +9,15 @@ class ProductListViewPresenterTests: XCTestCase {
     var mockedProductListFetcher: MockProductListFetcher!
     var mockedView: MockProductListView!
     var mockedImageFetcher: MockImageFetcher!
+    var mockedRouter: MockProductDetailRouter!
 
     override func setUp() {
         super.setUp()
         mockedProductListFetcher = MockProductListFetcher()
         mockedImageFetcher = MockImageFetcher()
         mockedView = MockProductListView()
-        presenter = ProductListViewPresenter(productListFetcher: mockedProductListFetcher, imageFetcher: mockedImageFetcher, view: mockedView)
+        mockedRouter = MockProductDetailRouter()
+        presenter = ProductListViewPresenter(productListFetcher: mockedProductListFetcher, imageFetcher: mockedImageFetcher, view: mockedView, router: mockedRouter)
     }
 
     // MARK: - fetchProducts
@@ -65,11 +67,29 @@ class ProductListViewPresenterTests: XCTestCase {
         XCTAssertEqual(mockedView.invokedImageIndex, 0)
     }
 
+    // MARK: - showDetails
+
+    func test_showDetails_shouldCallRouter() {
+        stubValidProducts()
+        presenter.fetchProducts()
+        presenter.showDetails(at: 0)
+        XCTAssertEqual(mockedRouter.invokedID, validProducts[0].id)
+    }
+
+    func test_showDetails_shouldNotCallRouter_whenIndexIsOutOfBounds() {
+        stubValidProducts()
+        presenter.fetchProducts()
+        presenter.showDetails(at: 1)
+        XCTAssertFalse(mockedRouter.didShowProductDetails)
+        presenter.showDetails(at: -1)
+        XCTAssertFalse(mockedRouter.didShowProductDetails)
+    }
+
     // MARK: - Helpers
 
     var validProducts: [Product] {
         return [
-            Product(title: "title1", price: "price1", imagePath: "imagePath1")
+            Product(id: "id1", title: "title1", price: "price1", imagePath: "imagePath1")
         ]
     }
 

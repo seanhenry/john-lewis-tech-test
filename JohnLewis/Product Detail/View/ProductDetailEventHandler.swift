@@ -1,0 +1,4 @@
+
+protocol ProductDetailEventHandler {
+    func fetchDetails()
+}

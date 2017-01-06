@@ -21,13 +21,14 @@ class NetworkProductListFetcher: Fetcher<[Product]>, ProductListFetcher {
         }
 
         private func toProduct(json: JSON) -> Product? {
-            guard let title = json["title"].string,
+            guard let id = json["productId"].string,
+                  let title = json["title"].string,
                   let price = json["price"]["now"].string,
                   let imagePath = json["image"].string else {
                 return nil
             }
             let fixedImagePath = URLSchemeFixer.fixMissingScheme(in: imagePath)
-            return Product(title: title, price: "£" + price, imagePath: fixedImagePath)
+            return Product(id: id, title: title, price: "£" + price, imagePath: fixedImagePath)
         }
     }
 }

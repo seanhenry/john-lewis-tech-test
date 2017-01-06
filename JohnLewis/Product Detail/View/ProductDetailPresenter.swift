@@ -1,5 +1,5 @@
 
-class ProductDetailPresenter {
+class ProductDetailPresenter: ProductDetailEventHandler {
 
     private let productID: String
     private let productDetailFetcher: ProductDetailFetcher

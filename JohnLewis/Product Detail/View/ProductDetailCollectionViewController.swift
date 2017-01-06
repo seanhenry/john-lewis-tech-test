@@ -3,6 +3,7 @@ import UIKit
 class ProductDetailCollectionViewController: UICollectionViewController, ProductDetailView {
 
     var productDetail: ProductDetail?
+    var eventHandler: ProductDetailEventHandler!
 
     func showErrorMessage(_ message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -13,6 +14,11 @@ class ProductDetailCollectionViewController: UICollectionViewController, Product
 
     func showProductDetail(_ productDetail: ProductDetail) {
         self.productDetail = productDetail
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        eventHandler.fetchDetails()
     }
 
     override func numberOfSections(`in` collectionView: UICollectionView) -> Int {
