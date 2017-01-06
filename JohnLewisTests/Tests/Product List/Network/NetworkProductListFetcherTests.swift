@@ -26,25 +26,44 @@ class NetworkProductListFetcherTests: XCTestCase {
         XCTAssertEqual(error, testError)
     }
 
-    func test_fetch_shouldPassError_whenUnableToParseObject() {
-        mockedRequest.stubbedResult = .success(invalidObjectData)
-        let error = fetchSynchronously().error as? NetworkProductListFetcher.Error
+    // MARK: - Helpers
+
+    @discardableResult
+    func fetchSynchronously() -> ProductListFetcherResult {
+        var result: ProductListFetcherResult!
+        fetcher.fetch { r in
+            result = r
+        }
+        return result
+    }
+}
+
+class NetworkProductListFetcher_ParserTests: XCTestCase {
+
+    var parser: NetworkProductListFetcher.Parser!
+
+    override func setUp() {
+        super.setUp()
+        parser = NetworkProductListFetcher.Parser()
+    }
+
+    // MARK: - parse
+
+    func test_parse_shouldPassError_whenUnableToParseObject() {
+        let error = parser.parse(invalidObjectData).error as? DataParserError
         XCTAssertEqual(error, .couldNotParseResponse)
     }
 
-    func test_fetch_shouldParseProducts_whenValidObjectIsReturned() {
-        mockedRequest.stubbedResult = .success(validObjectData)
-        XCTAssertEqual(fetchSynchronously().result!, products)
+    func test_parse_shouldParseProducts_whenValidObjectIsReturned() {
+        XCTAssertEqual(parser.parse(validObjectData).result!, products)
     }
 
-    func test_fetch_shouldReturnEmptyArray_whenNoProductsAreReturned() {
-        mockedRequest.stubbedResult = .success(validEmptyObjectData)
-        XCTAssert(fetchSynchronously().result!.isEmpty)
+    func test_parse_shouldReturnEmptyArray_whenNoProductsAreReturned() {
+        XCTAssert(parser.parse(validEmptyObjectData).result!.isEmpty)
     }
 
-    func test_fetch_shouldIgnoreInvalidObjects() {
-        mockedRequest.stubbedResult = .success(partiallyValidObjectData)
-        XCTAssertEqual(fetchSynchronously().result!, products)
+    func test_parse_shouldIgnoreInvalidObjects() {
+        XCTAssertEqual(parser.parse(partiallyValidObjectData).result!, products)
     }
 
     // MARK: - Helpers
@@ -131,13 +150,5 @@ class NetworkProductListFetcherTests: XCTestCase {
             Product(title: "Freestanding Dishwasher", price: "£379.00", imagePath: "http://johnlewis.scene7.com/is/image/JohnLewis/234326391?")
         ]
     }
-
-    @discardableResult
-    func fetchSynchronously() -> ProductListFetcherResult {
-        var result: ProductListFetcherResult!
-        fetcher.fetch { r in
-            result = r
-        }
-        return result
-    }
 }
+

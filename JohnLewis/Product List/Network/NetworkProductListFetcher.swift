@@ -1,47 +1,33 @@
 import Foundation
 import SwiftyJSON
 
-class NetworkProductListFetcher: ProductListFetcher {
-
-    enum Error: Swift.Error {
-        case couldNotParseResponse
-    }
-
-    private let request: Request
+class NetworkProductListFetcher: Fetcher<[Product]>, ProductListFetcher {
 
     init(request: Request) {
-        self.request = request
+        super.init(request: request, parser: Parser())
     }
 
     func fetch(completion: @escaping (ProductListFetcherResult) -> ()) {
-        request.get(from: "/products/search?q=dishwasher&pageSize=20") { [weak self] result in
-            self?.handleResponse(result: result, completion: completion)
-        }
+        fetch(path: "/products/search?q=dishwasher&pageSize=20", completion: completion)
     }
 
-    private func handleResponse(result: Request.RequestResult, completion: (ProductListFetcherResult) -> ()) {
-        switch result {
-        case .failure(let error):
-            completion(.failure(error))
-        case .success(let response):
-            completion(parse(response))
-        }
-    }
+    class Parser: DataParser<[Product]> {
 
-    private func parse(_ response: Data) -> ProductListFetcherResult {
-        guard let products = JSON(data: response)["products"].array else {
-            return .failure(Error.couldNotParseResponse)
+        override func parse(_ data: Data) -> ParsedResult {
+            guard let products = JSON(data: data)["products"].array else {
+                return .failure(DataParserError.couldNotParseResponse)
+            }
+            return .success(products.flatMap(toProduct))
         }
-        return .success(products.flatMap(toProduct))
-    }
 
-    private func toProduct(json: JSON) -> Product? {
-        guard let title = json["title"].string,
-              let price = json["price"]["now"].string,
-              let imagePath = json["image"].string else {
-            return nil
+        private func toProduct(json: JSON) -> Product? {
+            guard let title = json["title"].string,
+                  let price = json["price"]["now"].string,
+                  let imagePath = json["image"].string else {
+                return nil
+            }
+            let fixedImagePath = URLSchemeFixer.fixMissingScheme(in: imagePath)
+            return Product(title: title, price: "£" + price, imagePath: fixedImagePath)
         }
-        let fixedImagePath = URLSchemeFixer.fixMissingScheme(in: imagePath)
-        return Product(title: title, price: "£" + price, imagePath: fixedImagePath)
     }
 }
