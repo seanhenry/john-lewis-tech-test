@@ -16,11 +16,13 @@ class NetworkProductDetailFetcher: Fetcher<ProductDetail>, ProductDetailFetcher 
         override func parse(_ data: Data) -> ParsedResult {
             let json = JSON(data: data)
             guard let title = json["title"].string,
+                  let price = json["price"]["now"].string,
                   let imagePath = json["media"]["images"]["urls"].first?.1.string,
-                  let description = json["details"]["productInformation"].string else {
+                  let description = json["details"]["productInformation"].string,
+                  let guarantee = json["additionalServices"]["includedServices"].first?.1.string else {
                 return .failure(DataParserError.couldNotParseResponse)
             }
-            return .success(ProductDetail(title: title, imagePath: imagePath, description: description))
+            return .success(ProductDetail(title: title, price: "£" + price, imagePath: imagePath, description: description, guarantee: guarantee))
         }
     }
 }

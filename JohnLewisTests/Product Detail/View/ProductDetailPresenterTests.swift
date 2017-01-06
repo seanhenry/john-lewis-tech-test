@@ -29,7 +29,7 @@ class ProductDetailPresenterTests: XCTestCase {
     }
 
     func test_fetchDetails_shouldNotifyView_whenFetchingSucceeds() {
-        let productDetail = ProductDetail(title: "title", imagePath: "image", description: "description")
+        let productDetail = ProductDetail(title: "title", price: "£99.99", imagePath: "image", description: "description", guarantee: "guarantee")
         mockedDetailFetcher.stubbedResult = .success(productDetail)
         presenter.fetchDetails()
         XCTAssertEqual(mockedView.invokedProductDetail, productDetail)

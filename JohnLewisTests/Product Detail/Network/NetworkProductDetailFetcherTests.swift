@@ -59,6 +59,7 @@ class NetworkProductDetailFetcher_ParserTests: XCTestCase {
 
     func test_parse_shouldReturnError_whenSomeDetailsAreMissing() {
         assertThatPartialDataReturnsError(createPartialData(title: nil))
+        assertThatPartialDataReturnsError(createPartialData(price: nil))
         assertThatPartialDataReturnsError(createPartialData(url: nil))
         assertThatPartialDataReturnsError(createPartialData(description: nil))
     }
@@ -74,16 +75,21 @@ class NetworkProductDetailFetcher_ParserTests: XCTestCase {
     }
 
     var productDetail: ProductDetail {
-        return ProductDetail(title: "Integrated Dishwasher", imagePath: "http://path/to/image", description: "description")
+        return ProductDetail(title: "Integrated Dishwasher", price: "£99.99", imagePath: "http://path/to/image", description: "description", guarantee: "guarantee")
     }
 
     func createPartialData(
         title: NSString? = "Integrated Dishwasher" as NSString,
+        price: NSString? = "99.99" as NSString,
         url: NSString? = "http://path/to/image" as NSString,
-        description: NSString? = "description" as NSString
+        description: NSString? = "description" as NSString,
+        guarantee: NSString? = "guarantee" as NSString
     ) -> Data {
         let dictionary: [String: Any] = [
             "title": title ?? NSNull(),
+            "price": [
+                "now": price ?? NSNull()
+            ],
             "media": [
                 "images": [
                     "urls": [
@@ -93,7 +99,12 @@ class NetworkProductDetailFetcher_ParserTests: XCTestCase {
             ],
             "details": [
                 "productInformation": description ?? NSNull()
-            ]
+            ],
+            "additionalServices": [
+                "includedServices": [
+                    guarantee ?? NSNull()
+                ]
+            ],
         ]
         return try! JSONSerialization.data(withJSONObject: dictionary)
     }

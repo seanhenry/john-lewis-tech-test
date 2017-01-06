@@ -44,6 +44,8 @@ class ProductDetailCollectionViewController: UICollectionViewController, Product
             return cell
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PurchaseInformationCell", for: indexPath) as! PurchaseInformationCell
+            cell.setPrice(productDetail.price)
+            cell.setGuarantee(productDetail.guarantee)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailsCell", for: indexPath) as! DetailsCell

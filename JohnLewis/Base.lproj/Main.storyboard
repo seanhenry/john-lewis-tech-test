@@ -172,19 +172,32 @@ E</string>
                                     <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£449.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgH-mT-Kqx" userLabel="Price">
-                                            <rect key="frame" x="8" y="8" width="67" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zcT-UX-HcX">
+                                            <rect key="frame" x="8" y="8" width="167" height="86"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£449.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgH-mT-Kqx" userLabel="Price">
+                                                    <rect key="frame" x="0.0" y="0.0" width="95.5" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 years warranty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LU-8n-fBk">
+                                                    <rect key="frame" x="0.0" y="37" width="127" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="bgH-mT-Kqx" firstAttribute="leading" secondItem="z4B-v0-gzg" secondAttribute="leading" constant="8" id="H38-6L-4Xk"/>
-                                    <constraint firstItem="bgH-mT-Kqx" firstAttribute="top" secondItem="z4B-v0-gzg" secondAttribute="top" constant="8" id="dY5-et-t93"/>
+                                    <constraint firstAttribute="trailing" secondItem="zcT-UX-HcX" secondAttribute="trailing" constant="8" id="11H-WO-lMF"/>
+                                    <constraint firstItem="zcT-UX-HcX" firstAttribute="top" secondItem="z4B-v0-gzg" secondAttribute="top" constant="8" id="Bbg-RR-27k"/>
+                                    <constraint firstItem="zcT-UX-HcX" firstAttribute="leading" secondItem="z4B-v0-gzg" secondAttribute="leading" constant="8" id="q3a-Sw-0Fg"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="guaranteeLabel" destination="3LU-8n-fBk" id="W3w-lF-zVG"/>
                                     <outlet property="priceLabel" destination="bgH-mT-Kqx" id="fXs-ov-leM"/>
                                 </connections>
                             </collectionViewCell>
