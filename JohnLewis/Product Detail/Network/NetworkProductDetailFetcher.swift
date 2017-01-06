@@ -1,9 +1,7 @@
 import Foundation
 import SwiftyJSON
 
-typealias ProductDetailResult = Result<ProductDetail, Error>
-
-class NetworkProductDetailFetcher: Fetcher<ProductDetail> {
+class NetworkProductDetailFetcher: Fetcher<ProductDetail>, ProductDetailFetcher {
 
     init(request: Request) {
         super.init(request: request, parser: Parser())
