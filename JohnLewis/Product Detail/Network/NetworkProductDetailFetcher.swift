@@ -1,8 +1,9 @@
 import Foundation
+import SwiftyJSON
 
-typealias ProductDetailResult = Result<Void, Error>
+typealias ProductDetailResult = Result<ProductDetail, Error>
 
-class NetworkProductDetailFetcher: Fetcher<Void> {
+class NetworkProductDetailFetcher: Fetcher<ProductDetail> {
 
     init(request: Request) {
         super.init(request: request, parser: Parser())
@@ -12,10 +13,16 @@ class NetworkProductDetailFetcher: Fetcher<Void> {
         fetch(path: "/products/\(id)", completion: completion)
     }
 
-    class Parser: DataParser<Void> {
+    class Parser: DataParser<ProductDetail> {
 
         override func parse(_ data: Data) -> ParsedResult {
-            return .failure(DataParserError.couldNotParseResponse)
+            let json = JSON(data: data)
+            guard let title = json["title"].string,
+                  let imagePath = json["media"]["images"]["urls"].first?.1.string,
+                  let description = json["details"]["productInformation"].string else {
+                return .failure(DataParserError.couldNotParseResponse)
+            }
+            return .success(ProductDetail(title: title, imagePath: imagePath, description: description))
         }
     }
 }

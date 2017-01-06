@@ -54,13 +54,53 @@ class NetworkProductDetailFetcher_ParserTests: XCTestCase {
     }
 
     func test_parse_shouldReturnProductDetail_whenParsingSuccessful() {
+        XCTAssertEqual(parser.parse(validData).result, productDetail)
+    }
 
+    func test_parse_shouldReturnError_whenSomeDetailsAreMissing() {
+        assertThatPartialDataReturnsError(createPartialData(title: nil))
+        assertThatPartialDataReturnsError(createPartialData(url: nil))
+        assertThatPartialDataReturnsError(createPartialData(description: nil))
     }
 
     // MARK: - Helpers
 
     var invalidData: Data {
         return "not valid data".data(using: .utf8)!
+    }
+
+    var validData: Data {
+        return createPartialData()
+    }
+
+    var productDetail: ProductDetail {
+        return ProductDetail(title: "Integrated Dishwasher", imagePath: "http://path/to/image", description: "description")
+    }
+
+    func createPartialData(
+        title: NSString? = "Integrated Dishwasher" as NSString,
+        url: NSString? = "http://path/to/image" as NSString,
+        description: NSString? = "description" as NSString
+    ) -> Data {
+        let dictionary: [String: Any] = [
+            "title": title ?? NSNull(),
+            "media": [
+                "images": [
+                    "urls": [
+                        url ?? NSNull()
+                    ]
+                ]
+            ],
+            "details": [
+                "productInformation": description ?? NSNull()
+            ]
+        ]
+        return try! JSONSerialization.data(withJSONObject: dictionary)
+    }
+
+    func assertThatPartialDataReturnsError(_ data: Data, file: StaticString = #file, line: UInt = #line) {
+        let error = parser.parse(data).error as? DataParserError
+        XCTAssertEqual(error, .couldNotParseResponse, file: file, line: line)
     }
 }
 
