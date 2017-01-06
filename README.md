@@ -5,6 +5,7 @@ A list of 20 dishwashers is displayed with their image, title and price.
 ## Assumptions
 
 - Products are always in stock
+- Products always have 1 guarantee
 
 ## Issues
 
