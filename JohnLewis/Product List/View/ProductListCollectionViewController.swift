@@ -56,6 +56,10 @@ class ProductListCollectionViewController: UICollectionViewController, UICollect
         eventHandler.fetchImage(at: indexPath.item)
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        eventHandler.showDetails(at: indexPath.item)
+    }
+
     private func cellForItem(at index: Int) -> ProductCell? {
         return collectionView?.cellForItem(at: IndexPath(item: index, section: 0)) as? ProductCell
     }
