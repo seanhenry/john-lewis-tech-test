@@ -52,7 +52,7 @@ class ProductDetailLayout: UICollectionViewFlowLayout {
     }
 
     private func height(forSection section: Int, from attributes: [UICollectionViewLayoutAttributes]) -> CGFloat {
-        let sectionAttributes = attributes.filter { $0.indexPath.section == 1 }
+        let sectionAttributes = attributes.filter { $0.indexPath.section == section }
         let maxY = sectionAttributes.max { a, b in
             return a.frame.maxY < b.frame.maxY
         }?.frame.maxY ?? 0

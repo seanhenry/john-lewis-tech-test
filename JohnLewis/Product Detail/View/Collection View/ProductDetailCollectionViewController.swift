@@ -1,11 +1,15 @@
 import UIKit
 
-class ProductDetailCollectionViewController: UICollectionViewController, ProductDetailView {
+class ProductDetailCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, ProductDetailView {
 
     var productDetail: ProductDetail?
     var image: UIImage?
     var eventHandler: ProductDetailEventHandler!
     @IBOutlet private var layout: ProductDetailLayout!
+    private let imageSection = 0
+    private let purchaseInformationSection = 1
+
+    // MARK: - ProductDetailView
 
     func showErrorMessage(_ message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -28,6 +32,22 @@ class ProductDetailCollectionViewController: UICollectionViewController, Product
         imageCells?.first?.setImage(image)
     }
 
+    // MARK: - UICollectionViewDelegateFlowLayout
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height: CGFloat
+        if indexPath.section == imageSection {
+            height = 420
+        } else if indexPath.section == purchaseInformationSection {
+            height = 74
+        } else {
+            height = 120
+        }
+        return CGSize(width: collectionView.frame.width, height: height)
+    }
+
+    // MARK: - UICollectionViewController
+
     override func viewDidLoad() {
         super.viewDidLoad()
         eventHandler.fetchDetails()
@@ -47,9 +67,9 @@ class ProductDetailCollectionViewController: UICollectionViewController, Product
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == imageSection {
             return setUpImageCell(collectionView: collectionView, at: indexPath)
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == purchaseInformationSection {
             return setUpPurchaseInformationCell(collectionView: collectionView, at: indexPath)
         } else {
             return setUpProductDetailCell(collectionView: collectionView, at: indexPath)
@@ -62,7 +82,7 @@ class ProductDetailCollectionViewController: UICollectionViewController, Product
             self.updateLayoutOrientation()
         }, completion: nil)
     }
-
+    
     private func updateLayoutOrientation() {
         layout.orientation = UIApplication.shared.statusBarOrientation
         collectionView?.layoutIfNeeded()
